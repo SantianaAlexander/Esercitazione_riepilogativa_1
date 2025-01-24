@@ -31,7 +31,6 @@ def index():
 def home():
     people = api_request()
     return render_template('home.html', people = people)
-    api_request()
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():

@@ -3,6 +3,7 @@ from flask_login import LoginManager, login_user, logout_user, login_required, c
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from models import Utenti, db
+from utilis import api_request
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///utenti.db'
@@ -28,7 +29,9 @@ def index():
 
 @app.route('/home')
 def home():
-    return render_template('home.html')
+    people = api_request()
+    return render_template('home.html', people = people)
+    api_request()
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():

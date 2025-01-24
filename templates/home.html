@@ -27,6 +27,14 @@
         </nav>
         <div class="container-fluid text-center pt-2">
             <h1 class="display-4">BENVENUTO, {{ current_user.username }}!</h1>
+            <h2 class="pt-3">Gli astronauti attualmente nello spazio:</h2>
+            <ul class="list-group">
+                {% for person in people %}
+                    <li class="list-group-item">
+                        <strong>{{ person['name'] }}</strong> - A bordo della navetta: {{ person['craft'] }}
+                    </li>
+                {% endfor %}
+            </ul>
         </div>
     </body>
 </html>
